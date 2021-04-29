@@ -58,8 +58,6 @@ module Carbon {
                 public var height;
                 public var color;
 
-                //
-
                 function initialize(start, end, height, color) {
                     self.start = start;
                     self.end = end;
@@ -73,8 +71,6 @@ module Carbon {
             
                 public var x;
                 public var color;
-
-                //
 
                 function initialize(x, color) {
                     self.x = x;
