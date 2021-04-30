@@ -2,6 +2,7 @@ using Toybox.Math;
 
 module Carbon {
 
+    //! The Footprint module provides extended position functionality
     (:Footprint :glance)
     module Footprint {
 
@@ -9,15 +10,25 @@ module Carbon {
         public var lat = 0.0;
         public var lon = 0.0;
 
-        // get
+        // GET
+
+        //! Get latitude in radians
+        public function latRad() {
+            return lat;
+        }
+
+        //! Get longitude in radians
+        public function lonRad() {
+            return lon;
+        }
 
         //! Get latitude in degrees
-        function latDeg() {
+        public function latDeg() {
             return 360 * Footprint.lat / Math.PI / 2;
         }
 
         //! Get longitude in degrees
-        function lonDeg() {
+        public function lonDeg() {
             return 360 * Footprint.lon / Math.PI / 2;
         }
 

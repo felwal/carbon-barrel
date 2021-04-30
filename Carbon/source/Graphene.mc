@@ -1,40 +1,53 @@
 
 module Carbon {
 
-    (:Graphite :glance)
-    module Graphite {
+    //! The Graphene module contains 64-colors
+    (:Graphene :glance)
+    module Graphene {
 
-        // Quaternary colors
+        // QUATERNARY COLORS
 
-        // DK: dark (value)
-        // LT: light (value)
-        // DR: darker (value)
-        // LR: lighter (value)
-        // WK: weak (chroma)
+        // abbreviations:
+        // * DK: dark (value)
+        // * LT: light (value)
+        // * DR: darker (value)
+        // * LR: lighter (value)
+        // * WK: weak (chroma)
 
         // RGB mono
-        public const COLOR_BLACK = 0x000000; // BLACK
-        public const COLOR_DK_GRAY = 0x555555; // DK_GRAY
-        public const COLOR_LT_GRAY = 0xAAAAAA; // LT_GRAY
-        public const COLOR_WHITE = 0xFFFFFF; // WHITE
+        public const COLOR_BLACK = 0x000000; // Graphics.COLOR_BLACK
+        public const COLOR_DK_GRAY = 0x555555; // Graphics.COLOR_DK_GRAY
+        public const COLOR_LT_GRAY = 0xAAAAAA; // Graphics.COLOR_LT_GRAY
+        public const COLOR_WHITE = 0xFFFFFF; // Graphics.COLOR_WHITE
+
+        // ordering:
+        // * primary
+        // **** quaternary
+        // *** tertiary
+        // **** quaternary
+        // ** secondary
+        // **** quaternary
+        // *** tertiary
+        // **** quaternary
+        // * primary
 
         // R red
         public const COLOR_DR_RED = 0x550000;
-        public const COLOR_DK_RED = 0xAA0000; // DK_RED
-        public const COLOR_RED = 0xFF0000; // RED
+        public const COLOR_DK_RED = 0xAA0000; // Graphics.COLOR_DK_RED
+        public const COLOR_RED = 0xFF0000; // Graphics.COLOR_RED
         public const COLOR_LT_RED = 0xFF5555;
         public const COLOR_LR_RED = 0xFFAAAA;
         public const COLOR_WK_RED = 0xAA5555;
 
         // RGRR vermilion
-        public const COLOR_VERMILION = 0xFF5500; // ORANGE
+        public const COLOR_VERMILION = 0xFF5500; // Graphics.COLOR_ORANGE
 
         // RGR orange
         public const COLOR_DK_ORANGE = 0xAA5500;
         public const COLOR_LT_ORANGE = 0xFFAA55;
 
         // RGRG amber
-        public const COLOR_AMBER = 0xFFAA00; // YELLOW
+        public const COLOR_AMBER = 0xFFAA00; // Graphics.COLOR_YELLOW
 
         // RG yellow
         public const COLOR_DR_YELLOW = 0x555500;
@@ -56,8 +69,8 @@ module Carbon {
 
         // G green
         public const COLOR_DR_GREEN = 0x005500;
-        public const COLOR_DK_GREEN = 0x00AA00; // DK_GREEN
-        public const COLOR_GREEN = 0x00FF00; // GREEN
+        public const COLOR_DK_GREEN = 0x00AA00; // Graphics.COLOR_DK_GREEN
+        public const COLOR_GREEN = 0x00FF00; // Graphics.COLOR_GREEN
         public const COLOR_LT_GREEN = 0x55FF55;
         public const COLOR_LR_GREEN = 0xAAFFAA;
         public const COLOR_WK_GREEN = 0x55AA55;
@@ -81,7 +94,7 @@ module Carbon {
         public const COLOR_WK_CYAN = 0x55AAAA;
 
         // GBBG capri
-        public const COLOR_CAPRI = 0x00AAFF; // BLUE
+        public const COLOR_CAPRI = 0x00AAFF; // Graphics.COLOR_BLUE
 
         // GBB azure
         public const COLOR_DK_AZURE = 0x0055AA;
@@ -93,7 +106,7 @@ module Carbon {
         // B blue
         public const COLOR_DR_BLUE = 0x000055;
         public const COLOR_DK_BLUE = 0x0000AA;
-        public const COLOR_BLUE = 0x0000FF; // DK_BLUE
+        public const COLOR_BLUE = 0x0000FF; // Graphics.COLOR_DK_BLUE
         public const COLOR_LT_BLUE = 0x5555FF;
         public const COLOR_LR_BLUE = 0xAAAAFF;
         public const COLOR_WK_BLUE = 0x5555AA;
@@ -106,12 +119,12 @@ module Carbon {
         public const COLOR_LT_VIOLET = 0xAA55FF;
 
         // RBBR purple
-        public const COLOR_PURPLE = 0xAA00FF; // PURPLE
+        public const COLOR_PURPLE = 0xAA00FF; // Graphics.COLOR_PURPLE
 
         // RB magenta
         public const COLOR_DR_MAGENTA = 0x550055;
         public const COLOR_DK_MAGENTA = 0xAA00AA;
-        public const COLOR_MAGENTA = 0xFF00FF; // PINK
+        public const COLOR_MAGENTA = 0xFF00FF; // Graphics.COLOR_PINK
         public const COLOR_LT_MAGENTA = 0xFF55FF;
         public const COLOR_LR_MAGENTA = 0xFFAAFF;
         public const COLOR_WK_MAGENTA = 0xAA55AA;
