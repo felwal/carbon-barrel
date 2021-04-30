@@ -1,9 +1,24 @@
+using Toybox.Graphics;
 
 module Carbon {
 
-    //! The Graphene module contains 64-colors
+    //! The Graphene module contains simplified font- and extended color-constants
     (:Graphene :glance)
     module Graphene {
+
+        // FONTS
+
+        // Roboto Condensed
+        public const FONT_XTINY = Graphics.FONT_XTINY; // 19
+        public const FONT_TINY = Graphics.FONT_TINY; // 26
+        public const FONT_SMALL = Graphics.FONT_SMALL; // 29
+        public const FONT_MEDIUM = Graphics.FONT_MEDIUM; // 34
+        public const FONT_LARGE = Graphics.FONT_LARGE; // 37
+
+        // Roboto Black
+        public const FONT_MILD = Graphics.FONT_NUMBER_MILD; // 54
+        public const FONT_HOT = Graphics.FONT_NUMBER_HOT; // 82
+        public const FONT_THAI_HOT = Graphics.FONT_NUMBER_THAI_HOT; // 94
 
         // QUATERNARY COLORS
 
