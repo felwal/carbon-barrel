@@ -1,4 +1,5 @@
 using Toybox.Math;
+using Carbon.Chem as Chem;
 
 module Carbon {
 
@@ -24,12 +25,12 @@ module Carbon {
 
         //! Get latitude in degrees
         public function latDeg() {
-            return 360 * Footprint.lat / Math.PI / 2;
+            return Chem.deg(lat);
         }
 
         //! Get longitude in degrees
         public function lonDeg() {
-            return 360 * Footprint.lon / Math.PI / 2;
+            return Chem.deg(lon);
         }
 
         //
@@ -39,15 +40,15 @@ module Carbon {
         public function getLastKnownLocation(info) {
             var pos = info.currentLocation;
             if (pos != null) {
-                Footprint.lat = pos.toRadians()[0].toDouble();
-                Footprint.lon = pos.toRadians()[1].toDouble();
+                lat = pos.toRadians()[0].toDouble();
+                lon = pos.toRadians()[1].toDouble();
             }
         }
 
         //! Location event listener delegation
         public function onPosition(info) {
-            Footprint.lat = info.position.toRadians()[0].toDouble();
-            Footprint.lon = info.position.toRadians()[1].toDouble();
+            lat = info.position.toRadians()[0].toDouble();
+            lon = info.position.toRadians()[1].toDouble();
         }
 
     }

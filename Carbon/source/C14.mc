@@ -11,6 +11,11 @@ module Carbon {
             return new Time.Moment(todaySec + sec);
         }
 
+        public function unixDays(moment) {
+            var seconds = moment.value();
+            return (seconds / Time.Gregorian.SECONDS_PER_DAY).toNumber();
+        }
+
         // STRINGS
 
         //! Convert seconds to readable time string hh:mm:ss
