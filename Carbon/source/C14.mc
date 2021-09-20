@@ -16,7 +16,7 @@ module Carbon {
             return (seconds / Time.Gregorian.SECONDS_PER_DAY).toNumber();
         }
 
-        // STRINGS
+        // string
 
         //! Convert seconds to readable time string hh:mm:ss
         public function formatTime(secs) {
@@ -40,7 +40,7 @@ module Carbon {
             var timeStr = h.format("%02d") + ":" + m.format("%02d");
             return timeStr;
         }
-    
+
     }
 
 }

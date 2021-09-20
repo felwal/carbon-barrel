@@ -8,7 +8,7 @@ module Carbon {
 
         public const TAU = 2 * Math.PI;
 
-        // GEOMETRY
+        // geometry
 
         //! Get carteesian coordinates from polar coordinates
         //! @param angle The argument of the position, in radians
@@ -46,7 +46,7 @@ module Carbon {
             return TAU * deg / 360;
         }
 
-        // MISC MATHS
+        // misc
 
         //! Calculate the smallest of two values
         public function min(a, b) {

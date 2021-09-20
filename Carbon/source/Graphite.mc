@@ -8,7 +8,7 @@ module Carbon {
 
         public const STROKE = 2;
 
-        // COLORS
+        // color
 
         //! Set the current foreground color
         public function setColor(dc, foreground) {
@@ -20,14 +20,14 @@ module Carbon {
             dc.setColor(Graphene.COLOR_WHITE, Graphene.COLOR_BLACK);
         }
 
-        // PRIMITIVE
+        // primitive
 
         //! Fill a rectangle around a point
         public function fillRectangleCentered(dc, xCenter, yCenter, width, height) {
             dc.fillRectangle(xCenter - width / 2, yCenter - height / 2, width, height);
         }
 
-        // STROKE
+        // stroke
 
         //! Fill a circle with an outside stroke
         public function strokeCircle(dc, x, y, r, strokeWidth, fillColor, strokeColor) {
@@ -62,7 +62,7 @@ module Carbon {
             fillRectangleCentered(dc, xCenter, yCenter, width, height);
         }
 
-        // COMPOSITE
+        // composite
 
         //! Draw lines at the edges of the device context
         public function drawBorders(dc) {
@@ -115,7 +115,7 @@ module Carbon {
             }
 
             class Bar {
-            
+
                 public var start;
                 public var end;
                 public var height;
@@ -131,7 +131,7 @@ module Carbon {
             }
 
             class Indicator {
-            
+
                 public var x;
                 public var color;
 

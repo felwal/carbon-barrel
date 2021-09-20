@@ -6,7 +6,7 @@ module Carbon {
     (:Graphene :glance)
     module Graphene {
 
-        // FONTS
+        // font
 
         // Roboto Condensed
         public const FONT_XTINY = Graphics.FONT_XTINY; // 19
@@ -20,7 +20,7 @@ module Carbon {
         public const FONT_HOT = Graphics.FONT_NUMBER_HOT; // 82
         public const FONT_THAI_HOT = Graphics.FONT_NUMBER_THAI_HOT; // 94
 
-        // QUATERNARY COLORS
+        // quaternary color
 
         // abbreviations:
         // * DK: dark (value)

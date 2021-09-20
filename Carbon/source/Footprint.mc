@@ -11,7 +11,7 @@ module Carbon {
         public var lat = 0.0;
         public var lon = 0.0;
 
-        // GET
+        // get
 
         //! Get latitude in radians
         public function latRad() {
