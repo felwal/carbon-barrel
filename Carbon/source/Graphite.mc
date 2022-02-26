@@ -79,15 +79,17 @@ module Carbon {
             public static const BAR_MEDIUM = 7;
             public static const BAR_BIG = 11;
 
-            protected static const INDICATOR_WIDTH = BAR_SMALL;
+            protected static const INDICATOR_WIDTH = 3;
             protected static const INDICATOR_HEIGHT = 17;
 
-            private var _bars = [];
-            private var _indicators = [];
+            private var _bars;
+            private var _indicators;
 
             //
 
             public function initialize() {
+                _bars = [];
+                _indicators = [];
             }
 
             public function addBar(xStart, xEnd, height, color) {

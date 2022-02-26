@@ -9,16 +9,17 @@ module Carbon {
         // font
 
         // Roboto Condensed
-        public const FONT_XTINY = Graphics.FONT_XTINY; // 19
-        public const FONT_TINY = Graphics.FONT_TINY; // 26
-        public const FONT_SMALL = Graphics.FONT_SMALL; // 29
-        public const FONT_MEDIUM = Graphics.FONT_MEDIUM; // 34
-        public const FONT_LARGE = Graphics.FONT_LARGE; // 37
+        public const FONT_XTINY = 0; // Graphics.FONT_XTINY, 19sp
+        public const FONT_TINY = 1; // Graphics.FONT_TINY, 26sp
+        public const FONT_SMALL = 2; // Graphics.FONT_SMALL, 29sp
+        public const FONT_MEDIUM = 3; // Graphics.FONT_MEDIUM, 34sp
+        public const FONT_LARGE = 4; // Graphics.FONT_LARGE, 37sp
 
         // Roboto Black
-        public const FONT_MILD = Graphics.FONT_NUMBER_MILD; // 54
-        public const FONT_HOT = Graphics.FONT_NUMBER_HOT; // 82
-        public const FONT_THAI_HOT = Graphics.FONT_NUMBER_THAI_HOT; // 94
+        public const FONT_MILD = 5; // Graphics.FONT_NUMBER_MILD, 54sp
+        //public const FONT_MEDIUM = 6; // Graphics.FONT_NUMBER_MILD, ?sp
+        public const FONT_HOT = 7; // Graphics.FONT_NUMBER_HOT, 82sp
+        public const FONT_THAI_HOT = 8; // Graphics.FONT_NUMBER_THAI_HOT, 94sp
 
         // quaternary color
 

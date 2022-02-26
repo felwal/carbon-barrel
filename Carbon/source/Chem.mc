@@ -6,7 +6,7 @@ module Carbon {
     (:Chem :glance)
     module Chem {
 
-        public const TAU = 2 * Math.PI;
+        public const TAU = 6.28318530717958647692;
 
         // geometry
 
