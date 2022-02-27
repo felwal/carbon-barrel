@@ -1,54 +1,115 @@
 using Toybox.Math;
-using Carbon.Chem as Chem;
+using Carbon.Chem;
 
 module Carbon {
 
-    //! The Footprint module provides extended position functionality
-    (:Footprint :glance)
-    module Footprint {
+    //! The Footprint class provides extended position functionality
+    (:glance)
+    class Footprint {
+
+        var onRegisterPosition = null;
+        var isPositionRegistered = false;
 
         // position, in radians
-        public var lat = 0.0;
-        public var lon = 0.0;
+        private var _lat = 0.0;
+        private var _lon = 0.0;
+
+        // set
+
+        function setLatRad(lat) {
+            _lat = lat;
+        }
+
+        function setLonRad(lon) {
+            _lon = lon;
+        }
+
+        function setPosRad(lat, lon) {
+            _lat = lat;
+            _lon = lon;
+        }
+
+        function setLatDeg(lat) {
+            _lat = Chem.rad(lat);
+        }
+
+        function setLonDeg(lon) {
+            _lon = Chem.rad(lon);
+        }
+
+        function setPosDeg(lat, lon) {
+            _lat = Chem.rad(lat);
+            _lon = Chem.rad(lon);
+        }
+
+        function setPosLoc(positionLocation) {
+            if (positionLocation != null) {
+                _lat = positionLocation.toRadians()[0].toDouble();
+                _lon = positionLocation.toRadians()[1].toDouble();
+            }
+        }
 
         // get
 
+        function isPositioned() {
+            return _lat != 0.0 || _lon != 0.0;
+        }
+
         //! Get latitude in radians
-        public function latRad() {
-            return lat;
+        function getLatRad() {
+            return _lat;
         }
 
         //! Get longitude in radians
-        public function lonRad() {
-            return lon;
+        function getLonRad() {
+            return _lon;
         }
 
         //! Get latitude in degrees
-        public function latDeg() {
-            return Chem.deg(lat);
+        function getLatDeg() {
+            return Chem.deg(_lat);
         }
 
         //! Get longitude in degrees
-        public function lonDeg() {
-            return Chem.deg(lon);
+        function getLonDeg() {
+            return Chem.deg(_lon);
+        }
+
+        function formatted() {
+            return format(getLatDeg(), getLonDeg());
+        }
+
+        static function format(lat, lon) {
+            return lat + "°, " + lon + "°";
         }
 
         //
 
+        function enableLocationEvents(acquisitionType) {
+            Position.enableLocationEvents(acquisitionType, method(:registerPosition));
+        }
+
         //! Get last location while waiting for location event
         //! @param info Activity info
-        public function getLastKnownLocation(info) {
-            var pos = info.currentLocation;
-            if (pos != null) {
-                lat = pos.toRadians()[0].toDouble();
-                lon = pos.toRadians()[1].toDouble();
+        function registerLastKnownPosition() {
+            var activityInfo = Activity.getActivityInfo();
+            setPosLoc(activityInfo.currentLocation);
+
+            if (onRegisterPosition != null) {
+                onRegisterPosition.invoke();
             }
         }
 
         //! Location event listener delegation
-        public function onPosition(info) {
-            lat = info.position.toRadians()[0].toDouble();
-            lon = info.position.toRadians()[1].toDouble();
+        function registerPosition(positionInfo) {
+            setPosLoc(positionInfo.position);
+
+            if (onRegisterPosition != null) {
+                onRegisterPosition.invoke();
+            }
+            isPositionRegistered = true;
+
+            WatchUi.requestUpdate();
         }
 
     }
