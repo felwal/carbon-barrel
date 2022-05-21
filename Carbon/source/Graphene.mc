@@ -1,5 +1,3 @@
-using Toybox.Graphics;
-
 module Carbon {
 
     //! The Graphene module contains simplified font- and extended color-constants

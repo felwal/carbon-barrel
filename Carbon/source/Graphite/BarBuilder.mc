@@ -1,5 +1,3 @@
-using Toybox.Graphics;
-
 module Carbon {
 
     //! The Graphite module provides extended drawing functionality
