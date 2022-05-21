@@ -72,7 +72,7 @@ module Carbon {
 
         class BarBuilder {
 
-        	protected static const BAR_STROKE = 3;
+            protected static const BAR_STROKE = 3;
             protected static const INDICATOR_STROKE = 2;
 
             public static const BAR_SMALL = 3;
