@@ -20,7 +20,7 @@ module Carbon {
             return [x, y];
         }
 
-        //! Calculate the leftmost x-coordinate of a circular screen
+        //! Calculate the leftmost x-coordinate of a circular screen at a specific y
         public function minX(y, r) {
             if (y < 0 || y > 2 * r) {
                 return null;
@@ -28,7 +28,7 @@ module Carbon {
             return -Math.sqrt(Math.pow(r, 2) - Math.pow(y - r, 2)) + r;
         }
 
-        //! Calculate the leftmost x-coordinate of a circular screen
+        //! Calculate the rightmost x-coordinate of a circular screen at a specific y
         public function maxX(y, r) {
             if (y < 0 || y > 2 * r) {
                 return null;
@@ -36,26 +36,34 @@ module Carbon {
             return Math.sqrt(Math.pow(r, 2) - Math.pow(y - r, 2)) + r;
         }
 
-        //! Convert radians to degrees
         public function deg(rad) {
             return 360 * rad / TAU;
         }
 
-        //! Convert degrees to radians
         public function rad(deg) {
             return TAU * deg / 360;
         }
 
         // misc
 
-        //! Calculate the smallest of two values
         public function min(a, b) {
             return a <= b ? a : b;
         }
 
-        // Calculate the absolute value of a value
+        public function max(a, b) {
+            return a >= b ? a : b;
+        }
+
         public function abs(x) {
             return x < 0 ? -x : x;
+        }
+
+        //! The Monkey C modulo operator uses truncated division, which gives the remainder with same sign as the dividend.
+        //! This uses floored division, which gives the remainder with same sign as the divisor.
+        function mod(dividend, divisor) {
+            var quotient = Math.floor(dividend.toFloat() / divisor.toFloat()).toNumber();
+            var remainder = dividend - divisor * quotient;
+            return remainder;
         }
 
     }

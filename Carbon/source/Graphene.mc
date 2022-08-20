@@ -17,14 +17,14 @@ module Carbon {
         public const FONT_MILD = 5; // Graphics.FONT_NUMBER_MILD, 54sp
         //public const FONT_MEDIUM = 6; // Graphics.FONT_NUMBER_MILD, ?sp
         public const FONT_HOT = 7; // Graphics.FONT_NUMBER_HOT, 82sp
-        public const FONT_THAI_HOT = 8; // Graphics.FONT_NUMBER_THAI_HOT, 94sp
+        public const FONT_THAI = 8; // Graphics.FONT_NUMBER_THAI_HOT, 94sp
 
         // quaternary color
 
         // abbreviations:
+        // * DR: darker (value)
         // * DK: dark (value)
         // * LT: light (value)
-        // * DR: darker (value)
         // * LR: lighter (value)
         // * WK: weak (chroma)
 
