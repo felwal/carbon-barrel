@@ -1,3 +1,4 @@
+using Toybox.System;
 using Toybox.Time;
 
 module Carbon {
@@ -22,7 +23,7 @@ module Carbon {
 
         //! Convert String on the format "YYYY-MM-DDThh:mm:ss" to Moment
         public function iso8601StrToMoment(str) {
-            if (str.length() != 19) {
+            if (str == null || str.length() != 19) {
                 //Log.d(str + " not of ISO8601 (\"YYYY-MM-DDThh:mm:ss\")");
                 return null;
             }
@@ -44,6 +45,19 @@ module Carbon {
             };
 
             return Time.Gregorian.moment(options);
+        }
+
+        public function localIso8601StrToMoment(str) {
+            var moment = C14.iso8601StrToMoment(str);
+
+            if (moment != null) {
+                // subtract timezone offset
+                var utcOffsetSec = System.getClockTime().timeZoneOffset;
+                var utcOffsetDur = new Time.Duration(utcOffsetSec);
+                moment = moment.subtract(utcOffsetDur);
+            }
+
+            return moment;
         }
 
         // string

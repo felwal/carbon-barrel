@@ -78,11 +78,41 @@ module Carbon {
             return format(getLatDeg(), getLonDeg());
         }
 
+        function distanceTo(lat, lon) {
+            return distanceBetween(lat, lon, _lat, _lon);
+        }
+
+        // static
+
         static function format(lat, lon) {
             return lat + "°, " + lon + "°";
         }
 
-        //
+        //! Radians to meters
+        static function distanceBetween(lat1, lon1, lat2, lon2) {
+            var R = 6371000;
+
+            var phi1 = lat1 - Math.PI / 2;
+            var phi2 = lat2 - Math.PI / 2;
+
+            var x1 = R * Math.sin(phi1) * Math.cos(lon1);
+            var y1 = R * Math.sin(phi1) * Math.sin(lon1);
+            var z1 = R * Math.cos(phi1);
+
+            var x2 = R * Math.sin(phi2) * Math.cos(lon2);
+            var y2 = R * Math.sin(phi2) * Math.sin(lon2);
+            var z2 = R * Math.cos(phi2);
+
+            var dx = x2 - x1;
+            var dy = y2 - y1;
+            var dz = z2 - z1;
+
+            var distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
+
+            return distance;
+        }
+
+        // registration
 
         function enableLocationEvents(acquisitionType) {
             Position.enableLocationEvents(acquisitionType, method(:registerPosition));
