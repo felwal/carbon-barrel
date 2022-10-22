@@ -1,17 +1,22 @@
+using Toybox.Activity;
+using Toybox.Math;
+using Toybox.Position;
+using Toybox.WatchUi;
+using Toybox.Lang;
 using Carbon.Chem;
 
 module Carbon {
 
-    //! The Footprint class provides extended position functionality
+    //! The Footprint module provides extended position functionality
     (:glance)
-    class Footprint {
+    module Footprint {
 
         var onRegisterPosition = null;
         var isPositionRegistered = false;
 
         // position, in radians
-        private var _lat = 0.0;
-        private var _lon = 0.0;
+        var _lat = 0.0;
+        var _lon = 0.0;
 
         // set
 
@@ -84,12 +89,12 @@ module Carbon {
 
         // static
 
-        static function format(lat, lon) {
+        function format(lat, lon) {
             return lat + "°, " + lon + "°";
         }
 
         //! Radians to meters
-        static function distanceBetween(lat1, lon1, lat2, lon2) {
+        function distanceBetween(lat1, lon1, lat2, lon2) {
             var R = 6371000;
 
             var phi1 = lat1 - Math.PI / 2;
@@ -115,7 +120,7 @@ module Carbon {
         // registration
 
         function enableLocationEvents(acquisitionType) {
-            Position.enableLocationEvents(acquisitionType, method(:registerPosition));
+            Position.enableLocationEvents(acquisitionType, new Lang.Method(Footprint, :registerPosition));
         }
 
         //! Get last location while waiting for location event
