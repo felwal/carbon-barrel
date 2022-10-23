@@ -1,10 +1,35 @@
+using Toybox.WatchUi;
+using Toybox.Math;
+using Toybox.Graphics;
+using Carbon.Chem;
+
 module Carbon {
 
     //! The Graphite module provides extended drawing functionality
     (:Graphite :glance)
     module Graphite {
 
-        public const STROKE = 2;
+        // tool
+
+        public function getCenterX(dc) {
+            return dc.getWidth() / 2;
+        }
+
+        public function getCenterY(dc) {
+            return dc.getHeight() / 2;
+        }
+
+        public function getRadius(dc) {
+            return (dc.getWidth() + dc.getHeight()) / 4;
+        }
+
+        public function pxToRad(px, r) {
+            return px.toFloat() / r;
+        }
+
+        public function pxToDeg(px, r) {
+            return Chem.deg(pxToRad(px, r));
+        }
 
         // color
 
@@ -18,14 +43,29 @@ module Carbon {
             dc.setColor(Graphene.COLOR_WHITE, Graphene.COLOR_BLACK);
         }
 
-        // primitive
+        public function resetPenWidth(dc) {
+            dc.setPenWidth(1);
+        }
+
+        // draw shape
+
+        public function drawArcCentered(dc, edgeOffset, degreeStart, degreeEnd) {
+            dc.drawArc(getCenterX(dc), getCenterY(dc), getRadius(dc) - edgeOffset, Graphics.ARC_COUNTER_CLOCKWISE, degreeStart, degreeEnd);
+        }
+
+        // fill shape
+
+        public function fillBackground(dc, color) {
+            setColor(dc, color);
+            fillRectangleCentered(dc, getCenterX(dc), getCenterY(dc), dc.getWidth(), dc.getHeight());
+        }
 
         //! Fill a rectangle around a point
         public function fillRectangleCentered(dc, xCenter, yCenter, width, height) {
             dc.fillRectangle(xCenter - width / 2, yCenter - height / 2, width, height);
         }
 
-        // stroke
+        // stroke shape
 
         //! Fill a circle with an outside stroke
         public function strokeCircle(dc, x, y, r, strokeWidth, fillColor, strokeColor) {
@@ -60,12 +100,53 @@ module Carbon {
             fillRectangleCentered(dc, xCenter, yCenter, width, height);
         }
 
-        // composite
+        public function strokeArcCentered(dc, edgeOffset, width, strokeWidth, degreeStart, degreeEnd, color, strokeColor) {
+            var x = getCenterX(dc);
+            var y = getCenterY(dc);
+            var r = getRadius(dc) - edgeOffset;
 
-        //! Draw lines at the edges of the device context
-        public function drawBorders(dc) {
-            resetColor(dc);
-            dc.drawRectangle(0, 0, dc.getWidth(), dc.getHeight());
+            degreeStart = Math.floor(degreeStart);
+            degreeEnd = Math.ceil(degreeEnd);
+
+            var strokeDegreeOffset = Math.ceil(pxToDeg(strokeWidth, getRadius(dc)));
+            var strokeDegreeStart = degreeStart - strokeDegreeOffset;
+            var strokeDegreeEnd = degreeEnd + strokeDegreeOffset;
+            var attr = Graphics.ARC_COUNTER_CLOCKWISE;
+
+            // stroke
+            setColor(dc, strokeColor);
+            dc.setPenWidth(width + 2 * strokeWidth);
+            dc.drawArc(x, y, r, attr, strokeDegreeStart, strokeDegreeEnd);
+
+            // draw
+            setColor(dc, color);
+            dc.setPenWidth(width);
+            dc.drawArc(x, y, r, attr, degreeStart, degreeEnd);
+
+            resetPenWidth(dc);
+        }
+
+        // text
+
+        public function drawTextArea(dc, x, y, w, h, fonts, text, justification, color) {
+            // compute location depending on justification, to match how `Dc#drawText` behaves
+            var locX = justification&Graphics.TEXT_JUSTIFY_CENTER
+                ? x - w / 2
+                : (justification&Graphics.TEXT_JUSTIFY_RIGHT ? x - w : x);
+            var locY = justification&Graphics.TEXT_JUSTIFY_VCENTER ? y - h / 2 : y;
+
+            var textArea = new WatchUi.TextArea({
+                :text => text,
+                :color => color,
+                :font => fonts,
+                :locX => locX,
+                :locY => locY,
+                :width => w,
+                :height => h,
+                :justification => justification
+            });
+
+            textArea.draw(dc);
         }
 
     }

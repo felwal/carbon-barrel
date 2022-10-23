@@ -8,7 +8,7 @@ using Carbon.Chem;
 module Carbon {
 
     //! The Footprint module provides extended position functionality
-    (:glance)
+    (:Footprint :glance)
     module Footprint {
 
         var onRegisterPosition = null;
