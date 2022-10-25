@@ -27,11 +27,11 @@ module Carbon {
             }
 
             public function addBar(xStart, xEnd, height, color) {
-                _bars.add(new Bar(xStart, xEnd, height, color));
+                _bars.add([ xStart, xEnd, height, color ]);
             }
 
             public function addIndicator(x, color) {
-                _indicators.add(new Indicator(x, color));
+                _indicators.add([ x, color ]);
             }
 
             public function build(dc) {
@@ -39,43 +39,13 @@ module Carbon {
 
                 for (var i = 0; i < _bars.size(); i++) {
                     var bar = _bars[i];
-                    setColor(dc, bar.color);
-                    strokeRectangle(dc, bar.start, yCenter - bar.height / 2, bar.end - bar.start, bar.height, BAR_STROKE, bar.color, Graphene.COLOR_BLACK);
+                    setColor(dc, bar[3]);
+                    strokeRectangle(dc, bar[0], yCenter - bar[2] / 2, bar[1] - bar[0], bar[2], BAR_STROKE, bar[3], Graphene.COLOR_BLACK);
                 }
 
                 for (var i = 0; i < _indicators.size(); i++) {
                     var indicator = _indicators[i];
-                    strokeRectangleCentered(dc, indicator.x, yCenter, INDICATOR_WIDTH, INDICATOR_HEIGHT, INDICATOR_STROKE, indicator.color, Graphene.COLOR_BLACK);
-                }
-
-            }
-
-            //
-
-            class Bar {
-
-                public var start;
-                public var end;
-                public var height;
-                public var color;
-
-                function initialize(start, end, height, color) {
-                    self.start = start;
-                    self.end = end;
-                    self.height = height;
-                    self.color = color;
-                }
-
-            }
-
-            class Indicator {
-
-                public var x;
-                public var color;
-
-                function initialize(x, color) {
-                    self.x = x;
-                    self.color = color;
+                    strokeRectangleCentered(dc, indicator[0], yCenter, INDICATOR_WIDTH, INDICATOR_HEIGHT, INDICATOR_STROKE, indicator[1], Graphene.COLOR_BLACK);
                 }
 
             }
