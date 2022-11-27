@@ -1,8 +1,8 @@
 using Toybox.Activity;
+using Toybox.Lang;
 using Toybox.Math;
 using Toybox.Position;
 using Toybox.WatchUi;
-using Toybox.Lang;
 using Carbon.Chem;
 
 module Carbon {

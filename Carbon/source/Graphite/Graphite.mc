@@ -1,6 +1,6 @@
-using Toybox.WatchUi;
-using Toybox.Math;
 using Toybox.Graphics;
+using Toybox.Math;
+using Toybox.WatchUi;
 using Carbon.Chem;
 
 module Carbon {
