@@ -1,23 +1,8 @@
 module Carbon {
 
-    //! The Graphene module contains simplified font- and extended color-constants
+    //! The Graphene module contains extended color-constants
     (:Graphene :glance)
     module Graphene {
-
-        // font
-
-        // Roboto Condensed
-        public const FONT_XTINY = 0; // Graphics.FONT_XTINY, 19sp
-        public const FONT_TINY = 1; // Graphics.FONT_TINY, 26sp
-        public const FONT_SMALL = 2; // Graphics.FONT_SMALL, 29sp
-        public const FONT_MEDIUM = 3; // Graphics.FONT_MEDIUM, 34sp
-        public const FONT_LARGE = 4; // Graphics.FONT_LARGE, 37sp
-
-        // Roboto Black
-        public const FONT_MILD = 5; // Graphics.FONT_NUMBER_MILD, 54sp
-        //public const FONT_MEDIUM = 6; // Graphics.FONT_NUMBER_MILD, ?sp
-        public const FONT_HOT = 7; // Graphics.FONT_NUMBER_HOT, 82sp
-        public const FONT_THAI = 8; // Graphics.FONT_NUMBER_THAI_HOT, 94sp
 
         // quaternary color
 
@@ -34,7 +19,7 @@ module Carbon {
         public const COLOR_LT_GRAY = 0xAAAAAA; // Graphics.COLOR_LT_GRAY
         public const COLOR_WHITE = 0xFFFFFF; // Graphics.COLOR_WHITE
 
-        // ordering:
+        // structure:
         // * primary
         // **** quaternary
         // *** tertiary
