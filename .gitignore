@@ -14,8 +14,7 @@
 *.rar
 
 # Generated files
-Carbon.barrel
-Carbon.barrel.debug.xml
+**/bin
 
 # Eclipse
 **/.settings
