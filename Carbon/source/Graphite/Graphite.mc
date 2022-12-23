@@ -23,6 +23,18 @@ module Carbon {
             return (dc.getWidth() + dc.getHeight()) / 4;
         }
 
+        public function getSizeByRatio(dc, ratio) {
+            return Math.round(Chem.min(dc.getWidth(), dc.getHeight()) * ratio);
+        }
+
+        public function getWidthByRatio(dc, ratio) {
+            return Math.round(dc.getWidth() * ratio);
+        }
+
+        public function getHeightByRatio(dc, ratio) {
+            return Math.round(dc.getHeight() * ratio);
+        }
+
         public function pxToRad(px, r) {
             return px.toFloat() / r;
         }
