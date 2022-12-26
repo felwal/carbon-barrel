@@ -74,7 +74,7 @@ module Carbon {
 
         //! Fill a rectangle around a point
         public function fillRectangleCentered(dc, xCenter, yCenter, width, height) {
-            dc.fillRectangle(xCenter - width / 2, yCenter - height / 2, width, height);
+            dc.fillRectangle(xCenter - Math.round(width / 2f), yCenter - Math.round(height / 2f), width, height);
         }
 
         // stroke shape
@@ -143,9 +143,9 @@ module Carbon {
         public function drawTextArea(dc, x, y, w, h, fonts, text, justification, color) {
             // compute location depending on justification, to match how `Dc#drawText` behaves
             var locX = justification&Graphics.TEXT_JUSTIFY_CENTER
-                ? x - w / 2
+                ? x - Math.round(w / 2f)
                 : (justification&Graphics.TEXT_JUSTIFY_RIGHT ? x - w : x);
-            var locY = justification&Graphics.TEXT_JUSTIFY_VCENTER ? y - h / 2 : y;
+            var locY = justification&Graphics.TEXT_JUSTIFY_VCENTER ? y - Math.round(h / 2f) : y;
 
             var textArea = new WatchUi.TextArea({
                 :text => text,
