@@ -24,7 +24,7 @@ module Carbon {
         //! Convert String on the format "YYYY-MM-DDThh:mm:ss" to Moment
         public function iso8601StrToMoment(str) {
             if (str == null || str.length() != 19) {
-                //Log.d(str + " not of ISO8601 (\"YYYY-MM-DDThh:mm:ss\")");
+                //Log.w(str + " not of ISO8601 (YYYY-MM-DDThh:mm:ss)");
                 return null;
             }
 
