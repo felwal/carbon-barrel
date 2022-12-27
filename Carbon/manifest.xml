@@ -7,7 +7,7 @@
         id="cd6dfa43acfb4f6a82f7bf7a6a34f3fe"
         minSdkVersion="3.1.0"
         module="Carbon"
-        version="0.1.3">
+        version="0.1.4">
 
         <iq:products>
             <iq:product id="d2air" />
