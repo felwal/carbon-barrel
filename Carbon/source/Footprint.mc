@@ -119,8 +119,14 @@ module Carbon {
 
         // registration
 
-        function enableLocationEvents(acquisitionType) {
-            Position.enableLocationEvents(acquisitionType, new Lang.Method(Footprint, :registerPosition));
+        function enableLocationEvents(continuous) {
+            Position.enableLocationEvents(continuous ? Position.LOCATION_CONTINUOUS : Position.LOCATION_ONE_SHOT,
+                new Lang.Method(Footprint, :registerPosition));
+        }
+
+        function disableLocationEvents() {
+            onRegisterPosition = null;
+            Position.enableLocationEvents(Position.LOCATION_DISABLE, null);
         }
 
         //! Get last location while waiting for location event
